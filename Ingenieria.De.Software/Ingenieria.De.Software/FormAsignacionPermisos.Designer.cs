@@ -126,7 +126,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(169, 24);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Roles del usuario ";
+            this.label2.Text = "Roles disponibles ";
             // 
             // label4
             // 
@@ -137,7 +137,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 24);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Roles disponibles ";
+            this.label4.Text = "Roles del usuario ";
             // 
             // label3
             // 

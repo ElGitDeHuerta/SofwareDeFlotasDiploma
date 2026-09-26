@@ -182,6 +182,18 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                 }
             }
         }
+        public static void ActualizarDVH(int usuarioId, string nuevoDVH)
+        {
+            string comando = "UPDATE Usuario SET Usuario_DVH = @dvh WHERE Usuario_Id = @id";
+            List<SqlParameter> parametros = new List<SqlParameter>
+            {
+                new SqlParameter("@dvh", nuevoDVH ?? (object)DBNull.Value),
+                new SqlParameter("@id", usuarioId)
+            };
+            DAO dao = new DAO();
+            dao.EjecutarNonQuery(comando, parametros);
+        }
+
         public static void GuardarPermisosUsuario(Usuario usuario)
         { //Método para guardar las relaciones del usuario en la DAL
             DAO dao = new DAO();

@@ -66,6 +66,20 @@ namespace Capa_de_Aplicación_BLL_
                 DigitoVerificadorDAL.GuardarDVV("Usuario", cm.Hash("TABLA_VACIA")); //si la tabla quedo vacia
             }
         }
+        public void RecalcularIntegridadGlobal()
+        {   // recalcula el DVH de todos los usuarios (por si cambio la composicion de un Rol
+            // que ya tenian asignado) y despues el DVV de la tabla completa
+            List<Usuario> usuarios = UsuarioDAL.Listar();
+            if (usuarios != null)
+            {
+                foreach (var usu in usuarios)
+                {
+                    usu.DVH = validador.CalcularDVH(usu);
+                    UsuarioDAL.ActualizarDVH(usu.Id, usu.DVH);
+                }
+            }
+            RecalcularUsuariosDVV();
+        }
         public int BloquearUsuariosPorFallaIntegridad()
         { // llama a dal para bloquear a los usuarios
             return UsuarioDAL.BloquearUsuariosPorFalla();
